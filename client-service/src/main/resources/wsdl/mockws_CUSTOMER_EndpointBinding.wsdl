@@ -1,0 +1,1285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Untitled" targetNamespace="http://xmlns.example.com/1361376195562" xmlns:ns14="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns9="http://www.tunisiana.com/ws/bscs/GetCustomer" xmlns:ns12="http://www.tunisiana.com/ws/bscs/updateCustomerAddiotionnalInfo" xmlns:ns5="http://www.tunisiana.com/ws/bscs/getCustomerCodes" xmlns:ns13="http://www.tunisiana.com/ws/bscs/common" xmlns:ns6="http://www.tunisiana.com/ws/bscs/preactivateActivation" xmlns:ns7="http://www.tunisiana.com/ws/bscs/genericActivationClient" xmlns:ns10="http://www.tunisiana.com/ws/bscs/checkIncidPaiement" xmlns:ns8="http://www.tunisiana.com/ws/bscs/searchCustomer" xmlns:ns11="http://www.tunisiana.com/ws/bscs/updateCustomerBillingAddressInfo" xmlns:ns2="http://www.tunisiana.com/ws/createCustomerContract" xmlns:ns1="http://www.tunisiana.com/tnesb/common/wsexception/v1" xmlns:ns4="http://www.tunisiana.com/ws/bscs/CreateCustomer" xmlns:ns3="http://www.tunisiana.com/ws/bscs/UpdateCustomer" xmlns:tns="http://xmlns.example.com/1361376195562" xmlns:ns0="http://www.tunisiana.com/ws/bscs/getCustomerHierarchy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/updateCustomerAddiotionnalInfo" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:tns="http://www.tunisiana.com/ws/bscs/updateCustomerAddiotionnalInfo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:complexType name="ComboType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="comboIndex" type="xs:long"/>
+          <xs:element minOccurs="0" name="comboValue" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ListComboType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Combo" type="tns:ComboType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateCustomerAddiotionnalInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element minOccurs="0" name="msisdn">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[0-9][0-9]*"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="0" name="customerId" type="xs:long"/>
+          <xs:element minOccurs="0" name="listCombo" type="tns:ListComboType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateCustomerAddiotionnalInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+          <xs:element minOccurs="0" name="faultcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="faultmessage" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateCustomerAddiotionnalInfoRequest" type="tns:UpdateCustomerAddiotionnalInfoRequest"/>
+      <xs:element name="updateCustomerAddiotionnalInfoResponse" type="tns:UpdateCustomerAddiotionnalInfoResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/updateCustomerBillingAddressInfo" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:ns1="http://www.tunisiana.com/ws/bscs/common" xmlns:tns="http://www.tunisiana.com/ws/bscs/updateCustomerBillingAddressInfo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:import namespace="http://www.tunisiana.com/ws/bscs/common"/>
+      <xs:complexType name="UpdateCustomerBillingAddressInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element minOccurs="0" ref="ns1:addressType"/>
+          <xs:element minOccurs="0" name="msisdn">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[0-9][0-9]*"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="0" name="customerId" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateCustomerBillingAddressInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="address_seq" type="xs:long"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+          <xs:element minOccurs="0" name="faultcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="faultmessage" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateCustomerBillingAddressInfoRequest" type="tns:UpdateCustomerBillingAddressInfoRequest"/>
+      <xs:element name="updateCustomerBillingAddressInfoResponse" type="tns:UpdateCustomerBillingAddressInfoResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/getCustomerHierarchy" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:tns="http://www.tunisiana.com/ws/bscs/getCustomerHierarchy" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:complexType name="GetCustomerHierarchyRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element name="CustCode">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                <xs:whiteSpace value="collapse"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element default="0" minOccurs="0" name="RecursiveSearch">
+            <xs:simpleType>
+              <xs:restriction base="xs:long">
+                <xs:enumeration value="0"/>
+                <xs:enumeration value="1"/>
+                <xs:enumeration value="2"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="0" name="SearchCount">
+            <xs:simpleType>
+              <xs:restriction base="xs:long">
+                <xs:maxInclusive value="100000"/>
+                <xs:minInclusive value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="0" name="StartIndex">
+            <xs:simpleType>
+              <xs:restriction base="xs:long">
+                <xs:maxInclusive value="100000"/>
+                <xs:minInclusive value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Searcher">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                <xs:whiteSpace value="collapse"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCustomerHierarchyResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ListCustomer">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="CustCode" type="xs:string"/>
+                <xs:element minOccurs="0" name="PayResp" type="xs:string"/>
+                <xs:element minOccurs="0" name="Cs_Status" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="SearchIsComplete" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCustomerHierarchyRequest" type="tns:GetCustomerHierarchyRequest"/>
+      <xs:element name="getCustomerHierarchyResponse" type="tns:GetCustomerHierarchyResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/UpdateCustomer" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:ns1="http://www.tunisiana.com/ws/bscs/CreateCustomer" xmlns:tns="http://www.tunisiana.com/ws/bscs/UpdateCustomer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:import namespace="http://www.tunisiana.com/ws/bscs/CreateCustomer"/>
+      <xs:complexType name="UpdateCustomerRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element minOccurs="0" name="CustomerIdentifier">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="CustCode" type="xs:string"/>
+                <xs:element minOccurs="0" name="Cust_Id" type="xs:long"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="CustType" type="ns1:type"/>
+          <xs:element minOccurs="0" name="IdentityInformation" type="ns1:IdentityInformation"/>
+          <xs:element minOccurs="0" name="PersonalInformation" type="ns1:personalInformation"/>
+          <xs:element minOccurs="0" name="RIB" type="xs:string"/>
+          <xs:element minOccurs="0" name="PaymentType" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Add_Information" type="ns1:add_Information"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateCustomerResponse">
+        <xs:sequence>
+          <xs:element name="Status" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateCustomerRequest" type="tns:UpdateCustomerRequest"/>
+      <xs:element name="updateCustomerResponse" type="tns:UpdateCustomerResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/createCustomerContract" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:ns1="http://www.tunisiana.com/ws/bscs/common" xmlns:ns3="http://www.tunisiana.com/ws/bscs/genericActivationContract" xmlns:tns="http://www.tunisiana.com/ws/createCustomerContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:import namespace="http://www.tunisiana.com/ws/bscs/common"/>
+      <xs:import namespace="http://www.tunisiana.com/ws/bscs/CreateCustomer"/>
+      <xs:complexType name="CreateCustomerContractRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element minOccurs="0" name="CustCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="Cust_Id" type="xs:long"/>
+          <xs:element minOccurs="0" name="PaymentResp" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="IsDummy" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ContractResp" type="xs:boolean"/>
+          <xs:element name="PriceGroupCode" type="xs:long"/>
+          <xs:element name="CustOffer" type="xs:long"/>
+          <xs:element name="CustType" type="ns4:type"/>
+          <xs:element name="CustStructureType" type="tns:Structure"/>
+          <xs:element name="ReasonActivClient" type="xs:long"/>
+          <xs:element minOccurs="0" name="CIN" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyRegister" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdentityDoc_Type" type="xs:integer"/>
+          <xs:element minOccurs="0" name="IdentityDoc_No" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustIdPub" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustPassword" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustBillCycle" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustLimitTr1" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustLimitTr2" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustLimitTr3" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustCreditLimit" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustDeposit" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustCollector" type="xs:string"/>
+          <xs:element minOccurs="0" name="CostId" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustCreditCheckAgreed" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="CustDunning" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="CustPrepayment" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="Title" type="xs:long"/>
+          <xs:element minOccurs="0" name="LName" type="xs:string"/>
+          <xs:element minOccurs="0" name="FName" type="xs:string"/>
+          <xs:element minOccurs="0" name="Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="MName" type="xs:string"/>
+          <xs:element minOccurs="0" name="Street" type="xs:string"/>
+          <xs:element minOccurs="0" name="StreetNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="Zip" type="xs:string"/>
+          <xs:element minOccurs="0" name="City" type="xs:string"/>
+          <xs:element minOccurs="0" name="State" type="xs:string"/>
+          <xs:element minOccurs="0" name="CountryId" type="xs:long"/>
+          <xs:element minOccurs="0" name="Years" type="xs:string"/>
+          <xs:element minOccurs="0" name="Language" type="xs:long"/>
+          <xs:element minOccurs="0" name="BirthDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="Sex" type="xs:string"/>
+          <xs:element minOccurs="0" name="Note1" type="xs:string"/>
+          <xs:element minOccurs="0" name="Note2" type="xs:string"/>
+          <xs:element minOccurs="0" name="Note3" type="xs:string"/>
+          <xs:element minOccurs="0" name="MasCode" type="xs:long"/>
+          <xs:element minOccurs="0" name="DriveLicence" type="xs:string"/>
+          <xs:element minOccurs="0" name="Nationality" type="xs:long"/>
+          <xs:element minOccurs="0" name="Phone1Area" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone1" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone2Area" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone2" type="xs:string"/>
+          <xs:element minOccurs="0" name="FaxArea" type="xs:string"/>
+          <xs:element minOccurs="0" name="Fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="Email" type="xs:string"/>
+          <xs:element minOccurs="0" name="SMSNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="TaxNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="IsUrgentAddress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="IsForwardAddress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="AdressRoles" type="xs:string"/>
+          <xs:element minOccurs="0" name="Employer" type="xs:string"/>
+          <xs:element minOccurs="0" name="IsEmployee" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="JobDesc" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Add_Information" type="ns4:add_Information"/>
+          <xs:element name="msisdn" type="tns:MsisdnValid"/>
+          <xs:element name="tmCode" type="xs:long"/>
+          <xs:element minOccurs="0" name="pdvCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateRecept" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="packageType" type="xs:string"/>
+          <xs:element minOccurs="0" name="activationChannel" type="xs:string"/>
+          <xs:element name="sim" type="xs:string"/>
+          <xs:element name="ReasonActivContract">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="0" name="listParamServices">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="ParamService">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="sncode" type="xs:long"/>
+                      <xs:element minOccurs="0" name="listParamValues">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="ParamValue">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element minOccurs="0" name="prm_no" type="xs:long"/>
+                                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateCustomerContractResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="cs_id" type="xs:long"/>
+          <xs:element minOccurs="0" name="Contract_ID" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="MsisdnValid">
+        <xs:annotation>
+          <xs:documentation>Un msisdn invalide</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:length value="11"/>
+          <xs:whiteSpace value="collapse"/>
+          <xs:pattern value="216\d\d\d\d\d\d\d\d"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Structure">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="F"/>
+          <xs:enumeration value="S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="createCustomerContractRequest" type="tns:CreateCustomerContractRequest"/>
+      <xs:element name="createCustomerContractResponse" type="tns:CreateCustomerContractResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/searchCustomer" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:tns="http://www.tunisiana.com/ws/bscs/searchCustomer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:complexType name="SearchCustomersRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:choice>
+            <xs:element name="CIN">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:minLength value="1"/>
+                  <xs:whiteSpace value="collapse"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="CompanyName">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:minLength value="1"/>
+                  <xs:whiteSpace value="collapse"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Passeport">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:minLength value="1"/>
+                  <xs:whiteSpace value="collapse"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:choice>
+          <xs:element minOccurs="0" name="Custcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="Nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="Email" type="xs:string"/>
+          <xs:element minOccurs="0" name="RegNum" type="xs:string"/>
+          <xs:element minOccurs="0" name="City" type="xs:string"/>
+          <xs:element minOccurs="0" name="Zip" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustType" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustomerLevel" type="xs:string"/>
+          <xs:element minOccurs="0" name="PaymentResp">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="X"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SearchCustomersResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Customers">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Adr_FName" type="xs:string"/>
+                <xs:element minOccurs="0" name="Adr_LName" type="xs:string"/>
+                <xs:element minOccurs="0" name="BirthDate" type="xs:string"/>
+                <xs:element minOccurs="0" name="Custcode" type="xs:string"/>
+                <xs:element minOccurs="0" name="PaymentResp" type="xs:string"/>
+                <xs:element minOccurs="0" name="Adr_StreetNo" type="xs:string"/>
+                <xs:element minOccurs="0" name="Adr_Street" type="xs:string"/>
+                <xs:element minOccurs="0" name="Adr_City" type="xs:string"/>
+                <xs:element minOccurs="0" name="Adr_Zip" type="xs:string"/>
+                <xs:element minOccurs="0" name="Adr_Name" type="xs:string"/>
+                <xs:element minOccurs="0" name="Party_type" type="xs:string"/>
+                <xs:element minOccurs="0" name="Cs_status" type="xs:string"/>
+                <xs:element minOccurs="0" name="Customer_ID_HIGH" type="xs:string"/>
+                <xs:element minOccurs="0" name="CompanyName" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="SearchIsComplete" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="searchCustomersRequest" type="tns:SearchCustomersRequest"/>
+      <xs:element name="searchCustomersResponse" type="tns:SearchCustomersResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/GetCustomer" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:tns="http://www.tunisiana.com/ws/bscs/GetCustomer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:complexType name="GetCustomerRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:choice>
+            <xs:element name="Contract_ID" type="xs:long"/>
+            <xs:element name="CustCode" type="xs:string"/>
+            <xs:element name="Msisdn">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:length value="11"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:choice>
+          <xs:element minOccurs="0" name="AddressRoles">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:length value="1"/>
+                <xs:pattern value="B|R|E|I|C|P|D|S|U"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="0" name="AdditionalInfo" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCustomerResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerIdentifier">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="CustCode" type="xs:string"/>
+                <xs:element minOccurs="0" name="Customer_ID" type="xs:long"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="CustParent">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="CustCode" type="xs:string"/>
+                <xs:element minOccurs="0" name="Customer_ID" type="xs:long"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="PaymentResp" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="IsDummy" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ContractResp" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="PriceGroupCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustOffer" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustType" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustStructureType" type="xs:string"/>
+          <xs:element minOccurs="0" name="Reason" type="xs:string"/>
+          <xs:element minOccurs="0" name="Customer_Open_Balance" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="IdentityInformation">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="CIN" type="xs:string"/>
+                <xs:element minOccurs="0" name="CompanyRegister" type="xs:string"/>
+                <xs:element minOccurs="0" name="IdentityDoc">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="IdentityDoc_Type" type="xs:integer"/>
+                      <xs:element minOccurs="0" name="IdentityDoc_No" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Personalnformation">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Identity">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="Title" type="xs:long"/>
+                      <xs:element minOccurs="0" name="LName" type="xs:string"/>
+                      <xs:element minOccurs="0" name="FName" type="xs:string"/>
+                      <xs:element minOccurs="0" name="Name" type="xs:string"/>
+                      <xs:element minOccurs="0" name="MName" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="Address">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="Street" type="xs:string"/>
+                      <xs:element minOccurs="0" name="StreetNo" type="xs:string"/>
+                      <xs:element minOccurs="0" name="ZIP" type="xs:string"/>
+                      <xs:element minOccurs="0" name="City" type="xs:string"/>
+                      <xs:element minOccurs="0" name="State" type="xs:string"/>
+                      <xs:element minOccurs="0" name="CountryId" type="xs:long"/>
+                      <xs:element minOccurs="0" name="Years" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="Language" type="xs:long"/>
+                <xs:element minOccurs="0" name="BirthDate" type="xs:date"/>
+                <xs:element minOccurs="0" name="Sex" type="xs:string"/>
+                <xs:element minOccurs="0" name="Note1" type="xs:string"/>
+                <xs:element minOccurs="0" name="Note2" type="xs:string"/>
+                <xs:element minOccurs="0" name="Note3" type="xs:string"/>
+                <xs:element minOccurs="0" name="MasCode" type="xs:long"/>
+                <xs:element minOccurs="0" name="DriveLicence" type="xs:string"/>
+                <xs:element minOccurs="0" name="Nationality" type="xs:long"/>
+                <xs:element minOccurs="0" name="ContactInformation">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="Phone1Area" type="xs:string"/>
+                      <xs:element minOccurs="0" name="Phone1" type="xs:string"/>
+                      <xs:element minOccurs="0" name="Phone2Area" type="xs:string"/>
+                      <xs:element minOccurs="0" name="Phone2" type="xs:string"/>
+                      <xs:element minOccurs="0" name="FaxArea" type="xs:string"/>
+                      <xs:element minOccurs="0" name="Fax" type="xs:string"/>
+                      <xs:element minOccurs="0" name="Email" type="xs:string"/>
+                      <xs:element minOccurs="0" name="SMSNo" type="xs:string"/>
+                      <xs:element minOccurs="0" name="TaxNo" type="xs:string"/>
+                      <xs:element minOccurs="0" name="IsUrgentAddress" type="xs:boolean"/>
+                      <xs:element minOccurs="0" name="IsForwardAddress" type="xs:boolean"/>
+                      <xs:element minOccurs="0" name="AddressRoles" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="Employment">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="Employer" type="xs:string"/>
+                      <xs:element minOccurs="0" name="IsEmployee" type="xs:boolean"/>
+                      <xs:element minOccurs="0" name="JobDesc" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Liste_Information">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Label" type="xs:string"/>
+                <xs:element minOccurs="0" name="Key" type="xs:string"/>
+                <xs:element minOccurs="0" name="Value" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetCustomerRequest" type="tns:GetCustomerRequest"/>
+      <xs:element name="GetCustomerResponse" type="tns:GetCustomerResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/checkIncidPaiement" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:tns="http://www.tunisiana.com/ws/bscs/checkIncidPaiement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:complexType name="CheckIncidPaiementRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element name="msisdn" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CheckIncidPaiementResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="nbrCtrPostActv" type="xs:int"/>
+          <xs:element minOccurs="0" name="checkValidR1" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="contR1" type="xs:int"/>
+          <xs:element minOccurs="0" name="checkValidR2" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="contR2" type="xs:int"/>
+          <xs:element minOccurs="0" name="checkValidR3" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="contR3" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="checkIncidPaiementRequest" type="tns:CheckIncidPaiementRequest"/>
+      <xs:element name="checkIncidPaiementResponse" type="tns:CheckIncidPaiementResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/genericActivationClient" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:ns1="http://www.tunisiana.com/ws/bscs/common" xmlns:tns="http://www.tunisiana.com/ws/bscs/genericActivationClient" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:import namespace="http://www.tunisiana.com/ws/bscs/common"/>
+      <xs:complexType name="GenericActivationClientRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element minOccurs="0" ref="ns1:addressType"/>
+          <xs:element minOccurs="0" ref="ns1:customerPropertiesType"/>
+          <xs:element minOccurs="0" name="msisdn" type="xs:string"/>
+          <xs:element minOccurs="0" name="co_id" type="xs:long"/>
+          <xs:element minOccurs="0" name="reg_num" type="xs:string"/>
+          <xs:element minOccurs="0" name="pdvCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateRecept" type="xs:string"/>
+          <xs:element minOccurs="0" name="activation_channel" type="xs:string"/>
+          <xs:element name="prg_code" type="xs:string"/>
+          <xs:element name="rpCode" type="xs:long"/>
+          <xs:element minOccurs="0" name="cs_billCycle" type="xs:string"/>
+          <xs:element minOccurs="0" name="cs_limit_TR1" type="xs:long"/>
+          <xs:element minOccurs="0" name="cs_limit_TR2" type="xs:long"/>
+          <xs:element minOccurs="0" name="cs_limit_TR3" type="xs:long"/>
+          <xs:element minOccurs="0" name="cs_climit" type="xs:long"/>
+          <xs:element minOccurs="0" name="cs_deposit" type="xs:long"/>
+          <xs:element minOccurs="0" name="cost_id" type="xs:long"/>
+          <xs:element minOccurs="0" name="listInfoText" type="tns:ListInfoTextType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GenericActivationClientResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="cs_id" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InfoTextType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ListInfoTextType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="InfoText" type="tns:InfoTextType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="genericActivationClientRequest" type="tns:GenericActivationClientRequest"/>
+      <xs:element name="genericActivationClientResponse" type="tns:GenericActivationClientResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/common" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:tns="http://www.tunisiana.com/ws/bscs/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AddressType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+          <xs:element minOccurs="0" name="add_birthdt" type="xs:string"/>
+          <xs:element minOccurs="0" name="add_seq" type="xs:string"/>
+          <xs:element minOccurs="0" name="add_roles" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="entreprise" type="xs:string"/>
+          <xs:element minOccurs="0" name="street" type="xs:string"/>
+          <xs:element minOccurs="0" name="zip" type="xs:string"/>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="countryId" type="xs:string"/>
+          <xs:element minOccurs="0" name="note1" type="xs:string"/>
+          <xs:element minOccurs="0" name="note2" type="xs:string"/>
+          <xs:element minOccurs="0" name="note3" type="xs:string"/>
+          <xs:element minOccurs="0" name="phn1Area" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone1" type="xs:string"/>
+          <xs:element minOccurs="0" name="phn2Area" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone2" type="xs:string"/>
+          <xs:element minOccurs="0" name="faxArea" type="xs:string"/>
+          <xs:element minOccurs="0" name="fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="gouvernorat" type="xs:string"/>
+          <xs:element minOccurs="0" name="adr_socialseno" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AddressType1">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="entreprise" type="xs:string"/>
+          <xs:element minOccurs="0" name="street" type="xs:string"/>
+          <xs:element minOccurs="0" name="zip" type="xs:string"/>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="countryId" type="xs:string"/>
+          <xs:element minOccurs="0" name="note1" type="xs:string"/>
+          <xs:element minOccurs="0" name="note2" type="xs:string"/>
+          <xs:element minOccurs="0" name="phn1Area" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone1" type="xs:string"/>
+          <xs:element minOccurs="0" name="phn2Area" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone2" type="xs:string"/>
+          <xs:element minOccurs="0" name="faxArea" type="xs:string"/>
+          <xs:element minOccurs="0" name="fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="gouvernorat" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ContractType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="msisdn" type="xs:string"/>
+          <xs:element minOccurs="0" name="sim" type="xs:string"/>
+          <xs:element minOccurs="0" name="pdvCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateRecept" type="xs:date"/>
+          <xs:element minOccurs="0" name="tmCode" type="xs:long"/>
+          <xs:element minOccurs="0" name="packageType" type="xs:long"/>
+          <xs:element minOccurs="0" name="activationChannel" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomerPropertiesType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="custCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="languageCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="jobDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="birthDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="cin" type="xs:string"/>
+          <xs:element minOccurs="0" name="sex" type="xs:string"/>
+          <xs:element minOccurs="0" name="custType" type="xs:string"/>
+          <xs:element minOccurs="0" name="masCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="nationality" type="xs:string"/>
+          <xs:element minOccurs="0" name="idDocType" type="xs:string"/>
+          <xs:element minOccurs="0" name="idDocNum" type="xs:string"/>
+          <xs:element minOccurs="0" name="tradeRegNum" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="addressType" type="tns:AddressType"/>
+      <xs:element name="addressType1" type="tns:AddressType1"/>
+      <xs:element name="contractType" type="tns:ContractType"/>
+      <xs:element name="customerPropertiesType" type="tns:CustomerPropertiesType"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tunisiana.com/tnesb/common/header/v1" xmlns="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Header">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="ns14:UUID"/>
+            <xs:element minOccurs="0" ref="ns14:TimeStamp"/>
+            <xs:element minOccurs="0" ref="ns14:IPaddress"/>
+            <xs:element minOccurs="0" ref="ns14:Username"/>
+            <xs:element minOccurs="0" ref="ns14:Mode"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="IPaddress" type="xs:string"/>
+      <xs:element name="Mode" type="xs:string"/>
+      <xs:element name="TimeStamp" type="xs:dateTime"/>
+      <xs:element name="UUID" type="xs:string"/>
+      <xs:element name="Username" type="xs:string"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/CreateCustomer" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:tns="http://www.tunisiana.com/ws/bscs/CreateCustomer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:complexType name="CreateCustomerRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element minOccurs="0" name="CustParent" type="tns:custParent"/>
+          <xs:element minOccurs="0" name="PaymentResp" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="IsDummy" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ContractResp" type="xs:boolean"/>
+          <xs:element name="PriceGroupCode" type="xs:long"/>
+          <xs:element name="CustOffer" type="xs:long"/>
+          <xs:element name="CustType" type="tns:type"/>
+          <xs:element name="CustStructureType" type="tns:structure"/>
+          <xs:element minOccurs="0" name="Reason" type="xs:long"/>
+          <xs:element minOccurs="0" name="IdentityInformation" type="tns:IdentityInformation"/>
+          <xs:element minOccurs="0" name="CustIdPub" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustPassword" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustBillCycle" type="xs:string"/>
+          <xs:element minOccurs="0" name="CustLimitTr1" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustLimitTr2" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustLimitTr3" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustCreditLimit" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustDeposit" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustCollector" type="xs:string"/>
+          <xs:element minOccurs="0" name="CostId" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustCreditCheckAgreed" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="CustDunning" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="CustPrepayment" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="PersonalInformation" type="tns:personalInformation"/>
+          <xs:element minOccurs="0" name="RIB" type="xs:string"/>
+          <xs:element minOccurs="0" name="PaymentType" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Add_Information" type="tns:add_Information"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateCustomerResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cust_Id" type="xs:long"/>
+          <xs:element minOccurs="0" name="CustCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="IdentityInformation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CIN" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyRegister" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdentityDoc" type="tns:identityDoc"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="add_Information">
+        <xs:sequence>
+          <xs:element name="Key">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(CHECK|COMBO|TEXT)[0-9][0-9]"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="Value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="address">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Street" type="xs:string"/>
+          <xs:element minOccurs="0" name="StreetNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="Zip" type="xs:string"/>
+          <xs:element minOccurs="0" name="City" type="xs:string"/>
+          <xs:element minOccurs="0" name="State" type="xs:string"/>
+          <xs:element minOccurs="0" name="CountryId" type="xs:long"/>
+          <xs:element minOccurs="0" name="Years" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="contactInformation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Phone1Area" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone1" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone2Area" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone2" type="xs:string"/>
+          <xs:element minOccurs="0" name="FaxArea" type="xs:string"/>
+          <xs:element minOccurs="0" name="Fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="Email" type="xs:string"/>
+          <xs:element minOccurs="0" name="SMSNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="TaxNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="IsUrgentAddress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="IsForwardAddress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="AdressRoles" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="custParent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="Cust_Id" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="employment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Employer" type="xs:string"/>
+          <xs:element minOccurs="0" name="IsEmployee" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="JobDesc" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="identity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Title" type="xs:long"/>
+          <xs:element minOccurs="0" name="LName" type="xs:string"/>
+          <xs:element minOccurs="0" name="FName" type="xs:string"/>
+          <xs:element minOccurs="0" name="Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="MName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="identityDoc">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IdentityDoc_Type" type="xs:integer"/>
+          <xs:element minOccurs="0" name="IdentityDoc_No" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personalInformation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Identity" type="tns:identity"/>
+          <xs:element minOccurs="0" name="Address" type="tns:address"/>
+          <xs:element minOccurs="0" name="Language" type="xs:long"/>
+          <xs:element minOccurs="0" name="BirthDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="Sex" type="xs:string"/>
+          <xs:element minOccurs="0" name="Note1" type="xs:string"/>
+          <xs:element minOccurs="0" name="Note2" type="xs:string"/>
+          <xs:element minOccurs="0" name="Note3" type="xs:string"/>
+          <xs:element minOccurs="0" name="MasCode" type="xs:long"/>
+          <xs:element minOccurs="0" name="DriveLicence" type="xs:string"/>
+          <xs:element minOccurs="0" name="Nationality" type="xs:long"/>
+          <xs:element minOccurs="0" name="ContactInformation" type="tns:contactInformation"/>
+          <xs:element minOccurs="0" name="Employment" type="tns:employment"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="structure">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="L"/>
+          <xs:enumeration value="F"/>
+          <xs:enumeration value="S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="type">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="C"/>
+          <xs:enumeration value="B"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="createCustomerRequest" type="tns:CreateCustomerRequest"/>
+      <xs:element name="createCustomerResponse" type="tns:CreateCustomerResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/getCustomerCodes" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:tns="http://www.tunisiana.com/ws/bscs/getCustomerCodes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:complexType name="GetCustomerCodesRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element minOccurs="0" name="cin" type="xs:string"/>
+          <xs:element minOccurs="0" name="reg_num" type="xs:string"/>
+          <xs:element minOccurs="0" name="docType" type="xs:string"/>
+          <xs:element minOccurs="0" name="docNum" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCustomerCodesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="custInfoList" type="tns:ListCustInfoType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ListCustInfoType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="custCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="is_BlackListed" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="birthdate" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCustomerCodesRequest" type="tns:GetCustomerCodesRequest"/>
+      <xs:element name="getCustomerCodesResponse" type="tns:GetCustomerCodesResponse"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.tunisiana.com/tnesb/common/wsexception/v1" xmlns="http://www.tunisiana.com/tnesb/common/wsexception/v1" xmlns:ns0="http://www.tunisiana.com/tnesb/common/wsexception/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Detail" type="xs:string"/>
+      <xs:element name="Error">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="ns0:ErrorMessageCode"/>
+            <xs:element minOccurs="0" ref="ns0:ErrorMessage"/>
+            <xs:element minOccurs="0" ref="ns0:Detail"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ErrorMessage" type="xs:string"/>
+      <xs:element name="ErrorMessageCode" type="xs:string"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tunisiana.com/ws/bscs/preactivateActivation" xmlns:ns0="http://www.tunisiana.com/tnesb/common/header/v1" xmlns:ns1="http://www.tunisiana.com/ws/bscs/common" xmlns:tns="http://www.tunisiana.com/ws/bscs/preactivateActivation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.tunisiana.com/tnesb/common/header/v1"/>
+      <xs:import namespace="http://www.tunisiana.com/ws/bscs/common"/>
+      <xs:complexType name="PreativateActivationRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns0:Header"/>
+          <xs:element minOccurs="0" ref="ns1:addressType"/>
+          <xs:element minOccurs="0" name="customerPropertiesType">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="languageCode" type="xs:string"/>
+                <xs:element minOccurs="0" name="jobDesc" type="xs:string"/>
+                <xs:element minOccurs="0" name="birthDate" type="xs:string"/>
+                <xs:element minOccurs="0" name="cin" type="xs:string"/>
+                <xs:element minOccurs="0" name="sex" type="xs:string"/>
+                <xs:element minOccurs="0" name="custType" type="xs:string"/>
+                <xs:element minOccurs="0" name="masCode" type="xs:string"/>
+                <xs:element minOccurs="0" name="nationality" type="xs:string"/>
+                <xs:element minOccurs="0" name="idDocType" type="xs:string"/>
+                <xs:element minOccurs="0" name="idDocNum" type="xs:string"/>
+                <xs:element minOccurs="0" name="tradeRegNum" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:choice>
+            <xs:element name="co_id" type="xs:long"/>
+            <xs:element name="msisdn" type="xs:string"/>
+          </xs:choice>
+          <xs:element minOccurs="0" name="pdvCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateRecept" type="xs:string"/>
+          <xs:element minOccurs="0" name="activation_channel" type="xs:string"/>
+          <xs:element minOccurs="0" name="ForceNewCustomer" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PreativateActivationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="custCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="custCode_dummy" type="xs:string"/>
+          <xs:element default="false" minOccurs="0" name="cust_is_dummy" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="preativateActivationRequest" type="tns:PreativateActivationRequest"/>
+      <xs:element name="preativateActivationResponse" type="tns:PreativateActivationResponse"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="searchCustomersResponse">
+    <wsdl:part name="part1" element="ns8:searchCustomersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchCustomersRequest">
+    <wsdl:part name="part1" element="ns8:searchCustomersRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerInfoResponse">
+    <wsdl:part name="part1" element="ns5:getCustomerCodesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerBillingAddressInfoRequest">
+    <wsdl:part name="part1" element="ns11:updateCustomerBillingAddressInfoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerBillingAddressInfoResponse">
+    <wsdl:part name="part1" element="ns11:updateCustomerBillingAddressInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="preActivatedActivationRequest">
+    <wsdl:part name="part1" element="ns6:preativateActivationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCustomerResponse">
+    <wsdl:part name="part1" element="ns4:createCustomerResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerContractRequest">
+    <wsdl:part name="part1" element="ns2:createCustomerContractRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Error">
+    <wsdl:part name="part1" element="ns1:Error">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCustomerHierarchyRequest">
+    <wsdl:part name="part1" element="ns0:getCustomerHierarchyRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerInfoRequest">
+    <wsdl:part name="part1" element="ns5:getCustomerCodesRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkIncidPaiementRequest">
+    <wsdl:part name="part1" element="ns10:checkIncidPaiementRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerAdditionnalInfoRequest">
+    <wsdl:part name="part1" element="ns12:updateCustomerAddiotionnalInfoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerResponse">
+    <wsdl:part name="part1" element="ns3:updateCustomerResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerRequest">
+    <wsdl:part name="part1" element="ns3:updateCustomerRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="genericActivationClientRequest">
+    <wsdl:part name="part1" element="ns7:genericActivationClientRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCustomerRequest">
+    <wsdl:part name="part1" element="ns4:createCustomerRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerAdditionnalInfoResponse">
+    <wsdl:part name="part1" element="ns12:updateCustomerAddiotionnalInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerRequest">
+    <wsdl:part name="part1" element="ns9:GetCustomerRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerResponse">
+    <wsdl:part name="part1" element="ns9:GetCustomerResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerContractResponse">
+    <wsdl:part name="part1" element="ns2:createCustomerContractResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCustomerHierarchyResponse">
+    <wsdl:part name="part1" element="ns0:getCustomerHierarchyResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="preActivatedActivationResponse">
+    <wsdl:part name="part1" element="ns6:preativateActivationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkIncidPaiementResponse">
+    <wsdl:part name="part1" element="ns10:checkIncidPaiementResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="genericActivationClientResponse">
+    <wsdl:part name="part1" element="ns7:genericActivationClientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PortType">
+    <wsdl:operation name="GetCustomerHierarchyOperartion">
+      <wsdl:input message="tns:GetCustomerHierarchyRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetCustomerHierarchyResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerContractOperation">
+      <wsdl:input message="tns:CreateCustomerContractRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateCustomerContractResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerOperation">
+      <wsdl:input message="tns:updateCustomerRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:updateCustomerResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerOperation">
+      <wsdl:input message="tns:createCustomerRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createCustomerResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInfoOperation">
+      <wsdl:input message="tns:getCustomerInfoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCustomerInfoResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PreActivatedActivationOperation">
+      <wsdl:input message="tns:preActivatedActivationRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:preActivatedActivationResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GenericActivationClientOperation">
+      <wsdl:input message="tns:genericActivationClientRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:genericActivationClientResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCustomersOperation">
+      <wsdl:input message="tns:searchCustomersRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:searchCustomersResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerOperation">
+      <wsdl:input message="tns:getCustomerRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCustomerResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIncidPaiementOperation">
+      <wsdl:input message="tns:checkIncidPaiementRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:checkIncidPaiementResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerBillingAddressInfoOperation">
+      <wsdl:input message="tns:updateCustomerBillingAddressInfoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:updateCustomerBillingAddressInfoResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerAdditionnalInfoOperation">
+      <wsdl:input message="tns:updateCustomerAdditionnalInfoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:updateCustomerAdditionnalInfoResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault1" message="tns:Error">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ws_CUSTOMER_EndpointBinding" type="tns:PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetCustomerHierarchyOperartion">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent//GetCustomerHierarchyOperartion" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerContractOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent//CreateCustomerContractOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent//UpdateCustomerOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent//CreateCustomerOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInfoOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent/PortTypeEndpoint1/GetCustomerInfoOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PreActivatedActivationOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent/PortTypeEndpoint1/PreActivatedActivationOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GenericActivationClientOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent/PortTypeEndpoint1/GenericActivationClientOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCustomersOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent//SearchCustomersOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent//GetCustomerOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIncidPaiementOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent/PortTypeEndpoint1/CheckIncidPaiementOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerBillingAddressInfoOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent/PortTypeEndpoint1/UpdateCustomerBillingAddressInfoOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerAdditionnalInfoOperation">
+      <soap:operation soapAction="/ProcessDefinition/BusinessProcess/WSDLs/CUSTOMER/CUSTOMER_Front_End-service.serviceagent/PortTypeEndpoint1/UpdateCustomerAdditionnalInfoOperation" style="document"/>
+      <wsdl:input>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="part1" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault name="fault1" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CUSTOMER_Front_End-service.serviceagent">
+    <wsdl:port name="ws_CUSTOMER_Endpoint" binding="tns:ws_CUSTOMER_EndpointBinding">
+      <soap:address location="http://DESKTOP-9L2RPQR:8088/mockws_CUSTOMER_EndpointBinding"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
