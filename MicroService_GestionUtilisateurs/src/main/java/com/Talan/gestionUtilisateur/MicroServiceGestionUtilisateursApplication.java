@@ -20,8 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
-import com.Talan.gestionUtilisateur.dao.ProfilRespository;
-import com.Talan.gestionUtilisateur.dao.UserRepository;
+import com.Talan.gestionUtilisateur.dao.*;
 import com.Talan.gestionUtilisateur.entities.BotoolMenu;
 import com.Talan.gestionUtilisateur.entities.BotoolPage;
 import com.Talan.gestionUtilisateur.entities.BotoolUser;
@@ -34,6 +33,7 @@ import com.Talan.gestionUtilisateur.entities.Profils;
 @EnableHystrixDashboard
 @ComponentScan("com.Talan.gestionUtilisateur")
 public class MicroServiceGestionUtilisateursApplication implements CommandLineRunner {
+	
 	
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {

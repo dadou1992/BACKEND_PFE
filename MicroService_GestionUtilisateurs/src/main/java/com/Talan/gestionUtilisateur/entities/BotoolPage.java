@@ -1,7 +1,9 @@
 package com.Talan.gestionUtilisateur.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,7 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-
+import com.Talan.gestionUtilisateur.entities.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class BotoolPage {
@@ -39,28 +42,27 @@ public class BotoolPage {
 	private BotoolMenu menu;
 	
 	
-//	, mappedBy = "pages"
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "Profil_Page", joinColumns = { @JoinColumn(name = "fk_page") }, inverseJoinColumns = {
-			@JoinColumn(name = "fk_profil") })
-	private List<Profils> profils = new ArrayList<>();
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="pages")
+	@JsonBackReference
+	private Set<Profils> profils = new HashSet<Profils>();
 
+	
+	
 	public BotoolPage() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public BotoolPage(Long pageId, String pageName, String url, String acronyme, int isAcitvated, int isManaged,
-			BotoolMenu menu, List<Profils> profils) {
+			BotoolMenu menu) {
 		super();
 		this.pageId = pageId;
 		this.pageName = pageName;
 		this.url = url;
-		Acronyme = acronyme;
+		this.Acronyme = acronyme;
 		this.isAcitvated = isAcitvated;
 		this.isManaged = isManaged;
 		this.menu = menu;
-		this.profils = profils;
 	}
 
 	public BotoolMenu getMenu() {
@@ -119,18 +121,22 @@ public class BotoolPage {
 		this.isManaged = isManaged;
 	}
 
-	public List<Profils> getProfils() {
-		return profils;
-	}
-
-	public void setProfils(List<Profils> profils) {
-		this.profils = profils;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "BotoolPage [pageId=" + pageId + ", pageName=" + pageName + ", url=" + url + ", Acronyme=" + Acronyme
-				+ ", isAcitvated=" + isAcitvated + ", isManaged=" + isManaged + "]";
+		return "BotoolPage [pageName=" + pageName + ", url=" + url + ", Acronyme=" + Acronyme + ", isAcitvated="
+				+ isAcitvated + ", isManaged=" + isManaged + ", menu=" + menu + "]";
 	}
+
+	public Set<Profils> getProfils() {
+		return profils;
+	}
+
+	public void setProfils(Set<Profils> profils) {
+		this.profils = profils;
+	}
+
+	
 
 }

@@ -2,7 +2,9 @@ package com.Talan.gestionUtilisateur.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,6 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.ws.rs.DELETE;
+
+import org.hibernate.annotations.Cascade;
+
+
 
 @Entity
 public class Profils implements Serializable{
@@ -20,11 +27,15 @@ public class Profils implements Serializable{
 	private String profilName;
 	private String description;
 	
-	//@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	@JoinTable(name = "Profil_Page", joinColumns = { @JoinColumn(name = "fk_profil") }, inverseJoinColumns = {
-			@JoinColumn(name = "fk_page") })
-	private List<BotoolPage> pages = new ArrayList<>();	
+	
+
+	/*@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)*/
+	
+	//@ManyToMany(fetch = FetchType.EAGER, cascade= {CascadeType.PERSIST,CascadeType.REFRESH})
+	@JoinTable(name = "Profil_Page", joinColumns = { @JoinColumn(name = "id_profil") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_page") })
+	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = BotoolPage.class)
+	private List<BotoolPage> pages = new ArrayList<BotoolPage>();	
 	
 	
 	
@@ -36,9 +47,8 @@ public class Profils implements Serializable{
 
 
 
-	public Profils(Long idProfils, String profilName, String description, List<BotoolUser> users) {
+	public Profils(String profilName, String description) {
 		super();
-		this.idProfils = idProfils;
 		this.profilName = profilName;
 		this.description = description;
 	}
@@ -89,12 +99,11 @@ public class Profils implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Profils [idProfils=" + idProfils + ", profilName=" + profilName + ", description=" + description + "]";
+		return "Profils [profilName=" + profilName + ", description=" + description + ", pages=" + pages + "]";
 	}
-	
-	
-	
-	
+
+
+
 	
 	
 

@@ -60,6 +60,7 @@ public class BotoolPageRestController {
 	@CrossOrigin("*")
 	@RequestMapping(value = "/deletePage/{id}", method = RequestMethod.DELETE)
 	public void supprimer(@PathVariable Long id) {
+		log.info("Exécution de la méthode deletePage ");
 		pageService.delete(id);
 	}
 
@@ -75,14 +76,14 @@ public class BotoolPageRestController {
 
 	/*******************************************************/
 	private BotoolPage defaultPage(Long id) {
-		BotoolPage page = new BotoolPage(id, "dashboard", null, null, 1, 1, null, null);
+		BotoolPage page = new BotoolPage(id, "dashboard", null, null, 1, 1, null);
 		return page;
 
 	}
 
 	public List<BotoolPage> defaultPages() {
-		BotoolPage p = new BotoolPage((long) 47932, "dashboard", null, null, 1, 1, null, null);
-		BotoolPage p2 = new BotoolPage((long) 1253, "home", null, null, 1, 1, null, null);
+		BotoolPage p = new BotoolPage((long) 47932, "dashboard", null, null, 1, 1, null );
+		BotoolPage p2 = new BotoolPage((long) 1253, "home", null, null, 1, 1, null );
 
 		Collection liste = new LinkedList<>();
 		liste.add(p);
