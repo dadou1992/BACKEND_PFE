@@ -51,7 +51,7 @@ public class JournalisationServiceApplicationTests {
 
 	}
 
-	// @Test
+	@Test
 	public void GetAllOperationsTest() {
 		LOGGER.info("Début d'exécution de test unitaire de méthode GetAllOperationsTest ");
 		List<History> result = historyService.findAll();
