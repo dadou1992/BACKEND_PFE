@@ -19,9 +19,15 @@ import com.example.xmlns._1361376195562.Error;
 import com.example.xmlns._1361376195562.PortType;
 import com.tunisiana.ws.bscs.getcustomer.GetCustomerRequest;
 import com.tunisiana.ws.bscs.getcustomer.GetCustomerResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.apache.cxf.interceptor.LoggingInInterceptor;
+import org.apache.cxf.interceptor.LoggingOutInterceptor;
 
 @Service
 public class GetCustomerInformationServiceImp implements GetCustomerInformationService {
+	private static final Logger logger = LoggerFactory.getLogger(GetCustomerInformationServiceImp.class);
 
 	@Override
 	public CustomerInformation getCustomerInformation(String value, FetchCustomer type) {
@@ -88,6 +94,7 @@ public class GetCustomerInformationServiceImp implements GetCustomerInformationS
 		return customerInformation;
 	}
 
+	@SuppressWarnings("deprecation")
 	private PortType createClient() {
 		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
 
@@ -96,9 +103,19 @@ public class GetCustomerInformationServiceImp implements GetCustomerInformationS
 
 		Map<String, Object> properties = factory.getProperties();
 		// to void null pointer exception
+//		if (properties == null) {
+//			properties = new HashMap<>();
+//			factory.setProperties(properties);
+//						
+//		}
+		
 		if (properties == null) {
-			properties = new HashMap<>();
-			factory.setProperties(properties);
+		properties = new HashMap<>();
+		factory.setProperties(properties);
+		logger.info("************ Request : ************" );
+		factory.getInInterceptors().add(new LoggingInInterceptor());
+		logger.info("************ Response : ************" );
+		factory.getOutInterceptors().add(new LoggingOutInterceptor());
 		}
 
 		properties.put("set-jaxb-validation-event-handler", "false");
